@@ -1,0 +1,39 @@
+// This is typically a toy version of a model that you would actually want to train. We just copied
+// it from training_config/, because the model there was already a toy model.  In here, you should
+// use very small sizes for all model parameters, and use randomly initialized embeddings instead
+// of a pretrained transformer for your embedder, so that tests run very fast.
+{
+    "dataset_reader" : {
+        "type": "classification-tsv",
+        "token_indexers": {
+            "tokens": {
+                "type": "single_id"
+            }
+        }
+    },
+    "train_data_path": "tests/fixtures/toy_data.tsv",
+    "validation_data_path": "tests/fixtures/toy_data.tsv",
+    "model": {
+        "type": "simple_classifier",
+        "embedder": {
+            "token_embedders": {
+                "tokens": {
+                    "type": "embedding",
+                    "embedding_dim": 10
+                }
+            }
+        },
+        "encoder": {
+            "type": "bag_of_embeddings",
+            "embedding_dim": 10
+        }
+    },
+    "data_loader": {
+        "batch_size": 8,
+        "shuffle": true
+    },
+    "trainer": {
+        "optimizer": "adam",
+        "num_epochs": 5
+    }
+}
