@@ -14,8 +14,8 @@
     "train_data_path": "/path/to/your/training/data/here.tsv",
     "validation_data_path": "/path/to/your/validation/data/here.tsv",
     "model": {
-        // This name needs to match the name that you used to register your dataset reader, with
-        // the call to `@DatasetReader.register()`.
+        // This name needs to match the name that you used to register your model, with
+        // the call to `@Model.register()`.
         "type": "simple_classifier",
         // These other parameters exactly match the constructor parameters of your model class.
         "embedder": {
