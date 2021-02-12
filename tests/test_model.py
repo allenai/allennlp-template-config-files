@@ -1,5 +1,3 @@
-import numpy
-
 from allennlp.common.testing import ModelTestCase
 
 
