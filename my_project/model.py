@@ -1,19 +1,18 @@
 from typing import Dict
 
 import torch
-from allennlp.data import Vocabulary
+from allennlp.data import Vocabulary, TextFieldTensors
 from allennlp.models import Model
 from allennlp.modules import TextFieldEmbedder, Seq2VecEncoder
 from allennlp.nn import util
 from allennlp.training.metrics import CategoricalAccuracy
 
 
-@Model.register('simple_classifier')
+@Model.register("simple_classifier")
 class SimpleClassifier(Model):
-    def __init__(self,
-                 vocab: Vocabulary,
-                 embedder: TextFieldEmbedder,
-                 encoder: Seq2VecEncoder):
+    def __init__(
+        self, vocab: Vocabulary, embedder: TextFieldEmbedder, encoder: Seq2VecEncoder
+    ):
         super().__init__(vocab)
         self.embedder = embedder
         self.encoder = encoder
@@ -21,9 +20,9 @@ class SimpleClassifier(Model):
         self.classifier = torch.nn.Linear(encoder.get_output_dim(), num_labels)
         self.accuracy = CategoricalAccuracy()
 
-    def forward(self,
-                text: Dict[str, torch.Tensor],
-                label: torch.Tensor = None) -> Dict[str, torch.Tensor]:
+    def forward(  # type: ignore
+        self, text: TextFieldTensors, label: torch.Tensor = None
+    ) -> Dict[str, torch.Tensor]:
         # Shape: (batch_size, num_tokens, embedding_dim)
         embedded_text = self.embedder(text)
         # Shape: (batch_size, num_tokens)
@@ -35,10 +34,10 @@ class SimpleClassifier(Model):
         # Shape: (batch_size, num_labels)
         probs = torch.nn.functional.softmax(logits, dim=-1)
         # Shape: (1,)
-        output = {'probs': probs}
+        output = {"probs": probs}
         if label is not None:
             self.accuracy(logits, label)
-            output['loss'] = torch.nn.functional.cross_entropy(logits, label)
+            output["loss"] = torch.nn.functional.cross_entropy(logits, label)
         return output
 
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
