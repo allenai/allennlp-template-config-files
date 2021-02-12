@@ -22,4 +22,4 @@ starting point). The very brief version of what's in here:
 * An example configuration file for training the model, which you would use with the following shell
   command from the base directory of this repository, after `pip install allennlp`:
 
-    allennlp train -s /dir/to/save/results training_config/my_model_trained_on_my_dataset.json
+  `allennlp train -s /dir/to/save/results training_config/my_model_trained_on_my_dataset.json`
