@@ -32,7 +32,7 @@
         }
     },
     "data_loader": {
-        // See http://docs.allennlp.org/main/api/data/data_loaders/data_loader/#dataloader for more info on acceptable
+        // See https://docs.allennlp.org/main/api/data/data_loaders/data_loader/#dataloader for more info on acceptable
         // parameters here.
         "batch_size": 8,
         "shuffle": true
