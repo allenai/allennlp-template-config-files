@@ -32,19 +32,19 @@
         }
     },
     "data_loader": {
-        // See http://docs.allennlp.org/master/api/data/dataloader/ for more info on acceptable
+        // See https://docs.allennlp.org/main/api/data/data_loaders/data_loader/#dataloader for more info on acceptable
         // parameters here.
         "batch_size": 8,
         "shuffle": true
     },
     "trainer": {
-        // See http://docs.allennlp.org/master/api/training/trainer/#gradientdescenttrainer-objects
+        // See https://docs.allennlp.org/main/api/training/trainer/#gradientdescenttrainer
         // for more info on acceptable parameters here.
         "optimizer": "adam",
         "num_epochs": 5
     }
     // There are a few other optional parameters that can go at the top level, e.g., to configure
     // vocabulary behavior, to use a separate dataset reader for validation data, or other things.
-    // See http://docs.allennlp.org/master/api/commands/train/#from_partial_objects for more info
+    // See https://docs.allennlp.org/main/api/commands/train/#from_partial_objects for more info
     // on acceptable parameters.
 }
